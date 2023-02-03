@@ -10,8 +10,12 @@ let engine = Engine.create();
 
 // create a renderer
 let render = Render.create({
-  element: document.body,
+  element: document.getElementById("canvas"),
   engine: engine,
+  options: {
+    width: 1600,
+    height: 800,
+  },
 });
 
 function kaboom() {
