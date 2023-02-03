@@ -45,4 +45,5 @@ function generateWorld(shapes) {
   let runner = Runner.create();
   // run the engine
   Runner.run(runner, engine);
+  Composite.clear();
 }
