@@ -1,9 +1,5 @@
 // module aliases
-let Engine = Matter.Engine,
-  Render = Matter.Render,
-  Runner = Matter.Runner,
-  Bodies = Matter.Bodies,
-  Composite = Matter.Composite;
+let { Engine, Render, Runner, Bodies, Composite } = Matter;
 
 // create an engine
 let engine = Engine.create({
@@ -15,6 +11,7 @@ let engine = Engine.create({
 // create runner
 let runner = Runner.create();
 let ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+
 // create a renderer
 let render = Render.create({
   element: document.getElementById("canvas"),
@@ -45,7 +42,7 @@ function kaboom() {
     );
 
   // add all of the bodies to the world
-  Composite.add(engine.world, [...manyShapes, ground]);
+  Composite.add(engine.world, manyShapes);
 
   // run the engine
   Runner.run(runner, engine);
