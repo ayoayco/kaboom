@@ -26,14 +26,10 @@ let render = Render.create({
 });
 
 generateWorld();
-let actions = 0;
 
 function clearTheWorld() {
   Composite.clear(engine.world);
   Composite.add(engine.world, ground);
-  if (actions > 10) {
-    location.reload();
-  }
 }
 
 function kaboom() {
@@ -53,10 +49,6 @@ function kaboom() {
 
   // run the engine
   Runner.run(runner, engine);
-  actions++;
-  if (actions > 10) {
-    location.reload();
-  }
 }
 
 function addShape() {
@@ -72,10 +64,6 @@ function addShape() {
 
   // run the engine
   Runner.run(runner, engine);
-  actions++;
-  if (actions > 10) {
-    location.reload();
-  }
 }
 
 function generateWorld() {
