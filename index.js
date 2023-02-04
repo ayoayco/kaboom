@@ -6,8 +6,15 @@ let Engine = Matter.Engine,
   Composite = Matter.Composite;
 
 // create an engine
-let engine = Engine.create();
+let engine = Engine.create({
+  timing: {
+    timeScale: 0.3,
+  },
+});
 
+// create runner
+let runner = Runner.create();
+let ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
 // create a renderer
 let render = Render.create({
   element: document.getElementById("canvas"),
@@ -17,6 +24,13 @@ let render = Render.create({
     height: 800,
   },
 });
+
+generateWorld();
+
+function clearTheWorld() {
+  Composite.clear(engine.world);
+  Composite.add(engine.world, ground);
+}
 
 function kaboom() {
   let manyShapes = new Array(300)
@@ -30,24 +44,34 @@ function kaboom() {
       )
     );
 
-  generateWorld(manyShapes);
+  // add all of the bodies to the world
+  Composite.add(engine.world, [...manyShapes, ground]);
+
+  // run the engine
+  Runner.run(runner, engine);
 }
 
 function addShape() {
   // to be continued
+  // let oneShape = Bodies.circle(80, 80, 80);
+  let oneShape = Bodies.polygon(
+    Math.random() * 450 + 1,
+    Math.random() * 450 + 1,
+    Math.random() * 12 + 1,
+    Math.random() * 150 + 100
+  );
+  Composite.add(engine.world, oneShape);
+
+  // run the engine
+  Runner.run(runner, engine);
 }
 
-function generateWorld(shapes) {
-  // add all of the bodies to the world
-  let ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
-  Composite.add(engine.world, [...shapes, ground]);
+function generateWorld() {
+  Composite.add(engine.world, ground);
 
   // run the renderer
   Render.run(render);
 
-  // create runner
-  let runner = Runner.create();
   // run the engine
   Runner.run(runner, engine);
-  Composite.clear();
 }
