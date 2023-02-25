@@ -30,7 +30,7 @@ function clearTheWorld() {
 }
 
 function kaboom() {
-  let manyShapes = new Array(300)
+  let manyShapes = new Array(50)
     .fill()
     .map(() =>
       Bodies.polygon(
