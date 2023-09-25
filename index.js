@@ -59,7 +59,7 @@ function addShape() {
   let oneShape = Bodies.polygon(
     // Math.random() * (width / 2) + 1,
     width / 2,
-    Math.random() * 450 + 1,
+    0,
     Math.random() * 12 + 1,
     Math.random() * 150 + 100
   );
