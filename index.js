@@ -10,11 +10,12 @@ let engine = Engine.create({
 
 const width = window.innerWidth > 0 ? window.innerWidth : screen.width;
 const height = window.innerHeight > 0 ? window.innerHeight : screen.height;
-console.log('>>> width, height', width, height);
 
 // create runner
 let runner = Runner.create();
-let ground = Bodies.rectangle(width / 2, height - 300, width / 2, 60, { isStatic: true });
+let ground = Bodies.rectangle(width / 2, height - 300, width / 2, 60, {
+  isStatic: true,
+});
 
 // create a renderer
 let render = Render.create({
@@ -38,7 +39,7 @@ function kaboom() {
     .fill()
     .map(() =>
       Bodies.polygon(
-        Math.random() * 450 + 1,
+        Math.random() * 1 + width / 2,
         Math.random() * 450 + 1,
         Math.random() * 16 + 1,
         Math.random() * 80 + 1
@@ -56,7 +57,8 @@ function addShape() {
   // to be continued
   // let oneShape = Bodies.circle(80, 80, 80);
   let oneShape = Bodies.polygon(
-    Math.random() * width / 2 + 12,
+    // Math.random() * (width / 2) + 1,
+    width / 2,
     Math.random() * 450 + 1,
     Math.random() * 12 + 1,
     Math.random() * 150 + 100
